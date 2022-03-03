@@ -18,7 +18,7 @@ const FileUpload = () =>{
             
             console.log(res);
             console.log( JSON.stringify(res));
-            console.log('URI : ' + res.uri)
+            console.log('URI : ' + res[0].uri)
 //     RNFetchBlob.fs
 //     .stat(res.uri)
 //     .then((stat) => {

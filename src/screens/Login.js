@@ -10,8 +10,8 @@ const LoginPage = ({navigation}) => {
 
     
    
-    const [email,setMail] = useState(' ')
-    const [password, setPass] = useState(' ')
+    const [email,setMail] = useState('')
+    const [password, setPass] = useState('')
 
     
     
