@@ -5,7 +5,7 @@ import Profile from '../screens/profile';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Vaccination from '../screens/Vaccination';
-import Doc from '../screens/Doc';
+import Dailytracker from '../screens/DailyTracker';
 
 
 
@@ -18,6 +18,10 @@ const BottomTab = () => {
     return(
       
         <Tab.Navigator screenOptions={{header:()=>null}}>
+
+       <Tab.Screen name="DailyTracker" component={Dailytracker}
+          options={{ tabBarIcon:({color,size})=>(<Fontisto name="injection-syringe" color={color} size={size}/>)}} 
+          />
          
           <Tab.Screen name="Vaccination" component={Vaccination}
           options={{ tabBarIcon:({color,size})=>(<Fontisto name="injection-syringe" color={color} size={size}/>)}} 

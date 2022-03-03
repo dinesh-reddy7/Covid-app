@@ -9,7 +9,8 @@ import Signup1 from '../screens/Signup1';
 import BottomTab from './BottomTab';
 import Profile from '../screens/profile';
 import FileUpload from '../screens/FileUpload';
-
+import Positive from '../screens/Positive';
+import Negative from '../screens/Negative';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,8 @@ const Stacks = () => {
       <Stack.Screen name="Vaccination" component={BottomTab} />
      
       <Stack.Screen name="FileUpload" component={FileUpload} />
+      <Stack.Screen name="Negative"component={Negative} />
+      <Stack.Screen name="Positive" component={ Positive} />
 
     </Stack.Navigator>
   );
