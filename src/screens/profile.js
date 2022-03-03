@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,16 +9,16 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
 
 
- const Signout = () =>{
-  auth()
-  .signOut()
-  .then(() => console.log('User signed out!'));
-  navigation.navigate("Login")
+  const Signout = () => {
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+    navigation.navigate("Login")
 
- }
+  }
 
 
   return (
@@ -36,7 +36,7 @@ const Profile = ({navigation}) => {
           <Text style={styles.txt}>User Name</Text>
           <TouchableOpacity
             style={styles.buttonContainer}
-            onPress={() => navigation.navigate('Emergency')}>
+            onPress={() => navigation.navigate('Contacts')}>
             <Text>Emergency contact</Text>
           </TouchableOpacity>
           <TouchableOpacity
