@@ -7,7 +7,7 @@ import BottomTab from './BottomTab';
 import FileUpload from '../screens/profile/FileUpload';
 import Positive from '../screens/Positive';
 import Negative from '../screens/Negative';
-// import Contacts from '../screens/Contacts'
+import Contacts from '../screens/Contacts'
 
 const Stack = createNativeStackNavigator();
 
@@ -17,10 +17,10 @@ const Stacks = () => {
       <Stack.Screen name="LoginPage" component={LoginPage} />
       <Stack.Screen name="Signup" component={Signup} />
       <Stack.Screen name="DailyTracker" component={BottomTab} />
-     <Stack.Screen name="FileUpload" component={FileUpload} />
-     {/* <Stack.Screen name="Contacts" component={Contacts}/> */}
-      <Stack.Screen name="Negative"component={Negative} />
-      <Stack.Screen name="Positive" component={ Positive} />
+      <Stack.Screen name="FileUpload" component={FileUpload} />
+      <Stack.Screen name="Contacts" component={Contacts} />
+      <Stack.Screen name="Negative" component={Negative} />
+      <Stack.Screen name="Positive" component={Positive} />
 
     </Stack.Navigator>
   );

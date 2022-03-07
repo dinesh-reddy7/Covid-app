@@ -1,14 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   Image,
   Alert,
-  ScrollView,
   FlatList,
-  TextInput,
   Button,
 } from 'react-native';
 
@@ -19,104 +16,62 @@ class Contacts extends Component {
       calls: [
         {
           id: 1,
-          name: 'Charan',
+          name: 'Bat Man',
           status: 'active',
-          phone: '9391211955',
           image: 'https://bootdey.com/img/Content/avatar/avatar7.png',
         },
         {
           id: 2,
-          name: 'Dinesh',
+          name: 'Super Man',
           status: 'active',
           image: 'https://bootdey.com/img/Content/avatar/avatar6.png',
         },
         {
           id: 3,
-          name: 'Siva Jyothi',
+          name: 'Iron Man',
           status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar7.png',
-        },
-        {
-          id: 4,
-          name: 'Kavya',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-        },
-        {
-          id: 5,
-          name: 'Vijay',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar7.png',
-        },
-        {
-          id: 6,
-          name: 'ajay',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-        },
-        {
-          id: 7,
-          name: 'sujay',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar7.png',
-        },
-        {
-          id: 8,
-          name: 'jay',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-        },
-        {
-          id: 9,
-          name: 'ajj',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar7.png',
-        },
-        {
-          id: 10,
-          name: 'null',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-        },
-        {
-          id: 11,
-          name: 'void',
-          status: 'active',
-          image: 'https://bootdey.com/img/Content/avatar/avatar7.png',
+          image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
         },
       ],
     };
   }
 
-  renderItem = ({item}) => {
+  renderItem = ({ item }) => {
     return (
-      <TouchableOpacity onPress={() => console.log('hello Welcome')}>
+      <View>
         <View style={styles.row}>
-          <Image source={{uri: item.image}} style={styles.pic} />
+          <Image source={{ uri: item.image }} style={styles.pic} />
           <View>
             <View style={styles.nameContainer}>
               <Text
                 style={styles.nameTxt}
                 numberOfLines={1}
                 ellipsizeMode="tail">
-                {item.name}
+                {item.name}{' '}
               </Text>
-              <TouchableOpacity onPress={() => console.log('9000000000')}>
-                <Text style={styles.mblTxt}>Mobile</Text>
-              </TouchableOpacity>
+              <Text
+                style={styles.mblTxt}
+                onPress={() => Alert.alert('Click Below to get my contacts')}>
+                Mobile
+              </Text>
             </View>
             <View style={styles.msgContainer}>
               <Text style={styles.msgTxt}>{item.status}</Text>
             </View>
           </View>
         </View>
-      </TouchableOpacity>
+        <View style={styles.btn}>
+          <Button
+            title="My contact ?"
+            onPress={() => Alert.alert(' MY Contact:9999999999')}></Button>
+        </View>
+      </View>
     );
   };
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <FlatList
           extraData={this.state}
           data={this.state.calls}
@@ -134,10 +89,11 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#DCDCDC',
-    backgroundColor: 'black',
-    borderBottomWidth: 1,
-    padding: 10,
+    borderColor: 'white',
+    backgroundColor: 'skyblue',
+    borderBottomWidth: 10,
+    padding: 30,
+    borderTopWidth: 10,
   },
   pic: {
     borderRadius: 30,
@@ -152,14 +108,14 @@ const styles = StyleSheet.create({
   nameTxt: {
     marginLeft: 15,
     fontWeight: '600',
-    color: '#222',
+    color: 'red',
     fontSize: 18,
     width: 170,
   },
   mblTxt: {
     fontWeight: '300',
-    color: 'green',
-    fontSize: 14,
+    color: '#777',
+    fontSize: 16,
   },
   msgContainer: {
     flexDirection: 'row',
@@ -170,6 +126,11 @@ const styles = StyleSheet.create({
     color: '#008B8B',
     fontSize: 12,
     marginLeft: 15,
+  },
+  btn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 

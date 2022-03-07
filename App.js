@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler'
 import React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 // import BottomTab from './src/navigation/BottomTab';
-import Stacks from './src/navigation/stack';
+import Stacks from './src/Navigation/stack';
 
 
 // import Hospital from './src/screens/Hospital/Hospital';
@@ -14,12 +14,12 @@ import Stacks from './src/navigation/stack';
 //const Tab = createBottomTabNavigator();
 
 const App = () => {
-  return(
+  return (
     <NavigationContainer>
-      <Stacks/>
+      <Stacks />
       {/* <BottomTab/> */}
     </NavigationContainer>
-    
+
   );
 }
-  export default App;
+export default App;

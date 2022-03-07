@@ -8,7 +8,8 @@ import {
   Button,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import {styles} from './Styles'
+import { styles } from './Styles'
+
 
 const Profile = ({ navigation }) => {
 
