@@ -8,7 +8,7 @@ import { StyleSheet } from "react-native"
     },
    item:{
        padding:20,
-       backgroundColor:"white",
+       backgroundColor:"#f8f8ff",
        marginVertical: 8,
     marginHorizontal: 16,
     borderRadius:20,
