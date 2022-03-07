@@ -16,4 +16,7 @@ export const TASTE ="No taste";
 export const SMELL =" No smell";
 export const OXYGEN =" Low oxygen level";
 export const TRACK ="Track";
-
+export const COVID ="Covid App";
+export const CERTIFICATE ="Vaccination certificate";
+export const CONTACT ="Emergency contact";
+export const SIGNOUT ="Signout";

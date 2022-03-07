@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {styles} from './Styles'
+import { CERTIFICATE, CONTACT, COVID, SIGNOUT } from '../../inputs/Text';
 
 const Profile = ({ navigation }) => {
 
@@ -34,21 +35,23 @@ const Profile = ({ navigation }) => {
 
       <View style={styles.body}>
         <View style={styles.bodyContent}>
-          <Text style={styles.txt}>Covid App</Text>
+          <Text style={styles.txt}>
+            {COVID}
+          </Text>
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => navigation.navigate('Contacts')}>
-            <Text>Emergency contact</Text>
+            <Text>{CONTACT}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => navigation.navigate("FileUpload")}>
-            <Text>Vaccination certificate</Text>
+            <Text>{CERTIFICATE}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={Signout}>
-            <Text>LogOut</Text>
+            <Text>{SIGNOUT}</Text>
           </TouchableOpacity>
         </View>
       </View>

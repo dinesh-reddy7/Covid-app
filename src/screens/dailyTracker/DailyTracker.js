@@ -16,7 +16,7 @@ import { COLD, COUGH, FEVER, OXYGEN, PAINS, SMELL, SYMPTOMS, TASTE, TRACK,BP } f
     if(groupValue.length <= 5){
       navigation.navigate("Negative");
     } else{
-      navigation.navigate("Positive")
+      navigation.navigate("Positive");
     }
   }
   return( 
