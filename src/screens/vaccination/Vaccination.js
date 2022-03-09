@@ -1,28 +1,48 @@
 import { Center, Heading, NativeBaseProvider,Radio,Box, Button } from 'native-base';
-import React from 'react';
-import {View,Text} from 'react-native';
+import React,{useState} from 'react';
 import { BOOSTERDOSE, FIRSTDOSE, SECONDDOSE, UPDATE, VACCINATIONSTATUS } from '../../inputs/Text';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 
 const Vaccination = () => {
+
+    const [value, setValue] = useState();
+    
+    const Update = () =>{
+        let id = auth().currentUser.uid;
+        try{
+            firestore()
+            .collection("user")
+            .doc(id)
+            .set({
+                VaccinationStatus:value
+            })
+            alert("Vaccination status succesfully updated")
+        }catch{
+            err => console.log(err) ;
+        }
+    }
+
     return(
        <NativeBaseProvider >
            <Center>
                <Box mt="40">
                <Heading>{VACCINATIONSTATUS}</Heading>
-           <Radio.Group defaultValue="1" name="exampleGroup" accessibilityLabel="favorite colorscheme">
-      <Radio colorScheme="emerald" value="1" my={1}>
+           <Radio.Group  name="exampleGroup"   onChange={nextValue => {
+    setValue(nextValue);}}>
+      <Radio  value="1st dose completed"  my={1}>
       {FIRSTDOSE}
       </Radio>
-      <Radio colorScheme="secondary" value="2" my={1}>
+      <Radio  value="2nd dose completed" my={1}>
        {SECONDDOSE}
       </Radio>
-      <Radio colorScheme="warning" value="3" my={1}>
+      <Radio  value="Booster dose completed" my={1}>
        {BOOSTERDOSE}
       </Radio>
     </Radio.Group>
     </Box>
-    <Button mt="10">{UPDATE}</Button>
+    <Button mt="10" onPress={Update}>{UPDATE}</Button>
     </Center>
        </NativeBaseProvider>
     )

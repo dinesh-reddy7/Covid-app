@@ -1,25 +1,25 @@
 import 'react-native-gesture-handler'
 import React from 'react';
-
-import {NavigationContainer} from '@react-navigation/native';
-// import BottomTab from './src/navigation/BottomTab';
+import { NavigationContainer } from '@react-navigation/native';
 import Stacks from './src/navigation/stack';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/Store';
 
 
-// import Hospital from './src/screens/Hospital/Hospital';
 
 
 
 
-//const Tab = createBottomTabNavigator();
 
 const App = () => {
-  return(
-    <NavigationContainer>
-      <Stacks/>
-      {/* <BottomTab/> */}
+  return (
+    <Provider store={store}>
+    <NavigationContainer  >
+      <Stacks />
+     
     </NavigationContainer>
-    
+    </Provider>
+
   );
 }
-  export default App;
+export default App;

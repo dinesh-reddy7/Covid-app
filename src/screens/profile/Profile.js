@@ -1,17 +1,21 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   Image,
   TouchableOpacity,
-  Button,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {styles} from './Styles'
 import { CERTIFICATE, CONTACT, COVID, SIGNOUT } from '../../inputs/Text';
+import { useSelector } from 'react-redux';
+import { userValue } from '../../redux/reducer/UserReducer';
+
+
+
 
 const Profile = ({ navigation }) => {
+ const value = useSelector(userValue);
 
 
   const Signout = () => {
@@ -36,7 +40,7 @@ const Profile = ({ navigation }) => {
       <View style={styles.body}>
         <View style={styles.bodyContent}>
           <Text style={styles.txt}>
-            {COVID}
+            {value}
           </Text>
           <TouchableOpacity
             style={styles.buttonContainer}
@@ -45,7 +49,7 @@ const Profile = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonContainer}
-            onPress={() => navigation.navigate("FileUpload")}>
+            onPress={() => navigation.navigate("Upload")}>
             <Text>{CERTIFICATE}</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -60,4 +64,3 @@ const Profile = ({ navigation }) => {
 };
 
 export default Profile;
-

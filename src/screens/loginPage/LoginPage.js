@@ -3,6 +3,7 @@ import { View, Text, Alert, TextInput, TouchableOpacity } from "react-native";
 import auth from '@react-native-firebase/auth';
 import {styles} from './Styles'
 import { LOGIN, LOGINPAGE,SIGNUP } from "../../inputs/Text";
+import { Input, Icon } from 'react-native-elements';
 
 
 
@@ -11,8 +12,8 @@ const LoginPage = ({navigation}) => {
 
     
    
-    const [email,setMail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email,setEmail] = useState('');
+    const [password, setPassword] = useState('');
     
    
 
@@ -34,12 +35,9 @@ const LoginPage = ({navigation}) => {
         auth().signInWithEmailAndPassword(email,password)
         .then(userCredentials => {
             const user =userCredentials.user;
-           
             console.log("logged in with",user.email);
             
-           
-
-           
+             
         })
         .catch(err=> alert(err))
     }else{
@@ -51,8 +49,18 @@ const LoginPage = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.welcome}>{LOGINPAGE}</Text>
-            <TextInput style={styles.input} placeholder="Enter your email" textAlign="center" onChangeText={(email)=>setMail(email)} />
-            <TextInput style={styles.input} placeholder="Enter your Password" textAlign="center" onChangeText={(email)=>setPassword(email)} secureTextEntry />
+            <Input
+        placeholder='Enter your email'
+        leftIcon={{ type: 'font-awesome', name: 'user' }}
+        onChangeText={email=>setEmail(email)}
+      />
+            <Input
+        placeholder='Enter your password'
+        placeholderTextColor="grey"
+        onChangeText={password =>setPassword(password)}
+        leftIcon={{ type: 'font-awesome', name: 'lock' }}
+        secureTextEntry
+      />
 
            
 

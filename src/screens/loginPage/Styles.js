@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native";
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#b0c4de",
+        backgroundColor: "white",
     },
     welcome: {
         

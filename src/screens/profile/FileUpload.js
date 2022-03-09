@@ -8,6 +8,8 @@ import {RNFetchBlob,stat,fs} from 'react-native-fetch-blob';
 
 
 
+
+
 const FileUpload = () => {
     const [fileName, setFileName] = useState();
     const [filePath, setFilePath] = useState();
@@ -36,17 +38,7 @@ const FileUpload = () => {
             //       console.log('Image uploaded to the bucket!');
             //   }).catch((e) => console.log('uploading image error => ', e));
             
-            setFileName(fileName);
-            setFilePath(filePath);
-            RNFetchBlob.fs
-            .stat(res[0])
-            .then((stats) => {
-              console.log(stats.path);
-         //output: /storage/emulated/0/WhatsApp/Media/WhatsApp Images/IMG-20200831-WA0019.jpg
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+           
         } catch (err) {
             if (DocumentPicker.isCancel(err)) {
                 console.log("canceled")
@@ -66,9 +58,7 @@ const FileUpload = () => {
             // Create Reference
             
            
-            const reference = storage().ref(
-              `/myfiles/${fileName}`
-            );
+            const reference = storage().ref(`/myfiles/${fileName}`);
       
             // Put File
             const task = reference.putFile(filePath);

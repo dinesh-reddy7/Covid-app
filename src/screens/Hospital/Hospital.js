@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, StatusBar, Button ,TouchableOpacity} from 'react-native';
-//import { TouchableOpacity } from 'react-native-gesture-handler';
-//import { set } from 'react-native-reanimated';
+import { View, Text,  FlatList ,TouchableOpacity} from 'react-native';
+
 import { Data } from '../../inputs/Data';
 import { styles } from './styles';
 
