@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Button, View, TouchableOpacity ,Text} from "react-native";
-
+import { View, Text } from "react-native";
 import { CheckBox } from 'react-native-elements'
-import { ScrollView } from "react-native-gesture-handler";
+import CustomButton from "../../components/CustomButton";
 import { SYMPTOMS } from "../../inputs/Text";
 
-import {styles} from './Styles'
+import { styles } from './Styles'
 
-const Dailytracker = ({navigation}) => {
+const Dailytracker = ({ navigation }) => {
 
   const [isSelected, setSelection] = useState(false);
 
@@ -26,23 +25,24 @@ const Dailytracker = ({navigation}) => {
   const [isSelected7, setSelection7] = useState(false);
   const [count, setCount] = useState(0);
 
-const Update = () => {
-  //alert(count);
-  if (count >= 5) {
-    navigation.navigate("Positive")
-  } else {
-    navigation.navigate("Negative")
+  const Track = () => {
+    //alert(count);
+    if (count >= 5) {
+      navigation.navigate("Positive")
+    } else {
+      navigation.navigate("Negative")
+    }
   }
-}
- 
+
   return (
-    
-      <View style={styles.container}>
-        <Text style={styles.heading}> {SYMPTOMS}</Text>
+
+    <View style={styles.container}>
+      <Text style={styles.heading}> {SYMPTOMS}</Text>
+      <View style={styles.checkboxContainer}>
         <CheckBox
           center
           title="Cold"
-          key = "Cold"
+          key="Cold"
           checked={isSelected}
           onPress={() => {
             setSelection(!isSelected)
@@ -59,7 +59,7 @@ const Update = () => {
         <CheckBox
           center
           title="Cough"
-          key = "Cough"
+          key="Cough"
           checked={isSelected1}
           onPress={() => {
             setSelection1(!isSelected1)
@@ -76,7 +76,7 @@ const Update = () => {
         <CheckBox
           center
           title="Fever"
-          key = "Fever"
+          key="Fever"
           checked={isSelected2}
           //checkedIcon="square"
           // uncheckedIcon="square"
@@ -95,7 +95,7 @@ const Update = () => {
         <CheckBox
           center
           title="BP"
-          key = "Bp"
+          key="Bp"
           checked={isSelected3}
           //checkedIcon="square"
           //uncheckedIcon="square"
@@ -113,8 +113,8 @@ const Update = () => {
         />
         <CheckBox
           center
-          title = "No Smell"
-          key = "No Smell"
+          title="No Smell"
+          key="No Smell"
           checked={isSelected4}
           //  checkedIcon="square"
           // uncheckedIcon="square"
@@ -133,7 +133,7 @@ const Update = () => {
         <CheckBox
           center
           title="Oxygen Level"
-          
+
           checked={isSelected5}
           //checkedIcon="square"
           //uncheckedIcon="square"
@@ -185,22 +185,11 @@ const Update = () => {
             console.log("Count", count);
           }}
         />
-
-
-        <View style={styles.btncontainer}>
-          <TouchableOpacity
-          style={styles.button}
-            onPress={Update}>
-           <Text>Track</Text>
-     
-
-          </TouchableOpacity>
-
-        </View>
-
-      </View >
-    
-
+      </View>
+      <View style={styles.btnContainer}>
+        <CustomButton title="Track" onPress={Track} style={styles.button} />
+      </View>
+    </View >
   );
 }
 

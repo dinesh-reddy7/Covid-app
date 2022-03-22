@@ -8,14 +8,13 @@ import {
 import auth from '@react-native-firebase/auth';
 import {styles} from './Styles'
 import { CERTIFICATE, CONTACT, COVID, SIGNOUT } from '../../inputs/Text';
-import { useSelector } from 'react-redux';
-import { userValue } from '../../redux/reducer/UserReducer';
+
 
 
 
 
 const Profile = ({ navigation }) => {
- const value = useSelector(userValue);
+   const email= auth().currentUser.email;
 
 
   const Signout = () => {
@@ -29,6 +28,7 @@ const Profile = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+     <TouchableOpacity></TouchableOpacity>
       <View style={styles.header} />
       <Image
         style={styles.img}
@@ -36,11 +36,10 @@ const Profile = ({ navigation }) => {
           uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgKPodsrwo-ZHV3T0mGjIoC5U-KEMZFRGgvA&usqp=CAU',
         }}
       />
-
       <View style={styles.body}>
         <View style={styles.bodyContent}>
           <Text style={styles.txt}>
-            {value}
+            User Email:  {email}
           </Text>
           <TouchableOpacity
             style={styles.buttonContainer}

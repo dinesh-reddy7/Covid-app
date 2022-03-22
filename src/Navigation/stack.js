@@ -23,7 +23,6 @@ const Stacks = () => {
       <Stack.Screen name="Negative" component={Negative} />
       <Stack.Screen name="Positive" component={Positive} />
       <Stack.Screen name="Upload" component={Upload} />
-
     </Stack.Navigator>
   );
 };

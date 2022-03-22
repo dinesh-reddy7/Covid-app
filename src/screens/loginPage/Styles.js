@@ -4,9 +4,17 @@ import { StyleSheet } from "react-native";
  export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
+        paddingTop:30,
         backgroundColor: "white",
+    },
+    title:{
+    fontSize:20,
+    fontWeight:"500"
+    },
+    img:{
+        height:100,
+        width:100
     },
     welcome: {
         
@@ -47,5 +55,5 @@ import { StyleSheet } from "react-native";
         flexDirection: "row",
         justifyContent: "space-between",
         width: "90%"
-    }
+    },
 })

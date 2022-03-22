@@ -5,6 +5,8 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
 
+
+
 const Vaccination = () => {
 
     const [value, setValue] = useState();
@@ -13,7 +15,7 @@ const Vaccination = () => {
         let id = auth().currentUser.uid;
         try{
             firestore()
-            .collection("user")
+            .collection("Vaccination")
             .doc(id)
             .set({
                 VaccinationStatus:value

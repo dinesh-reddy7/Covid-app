@@ -15,8 +15,10 @@ const FileUpload = () => {
     const [filePath, setFilePath] = useState();
     const [loading, setLoading] = useState(false);
     const [process, setProcess] = useState("");
+    const [singleFile, setSingleFile] = useState(null);
 
     const ChooseFile = async () => {
+      
 
         //Choose File to upload
         try {
@@ -24,20 +26,8 @@ const FileUpload = () => {
                 type: [DocumentPicker.types.allFiles],
             });
 
-            console.log(res);
-
-
-            const filePath = res[0].uri.replace("content://", "")
-            console.log(filePath)
-            let fileName = res[0].name;
-            //   console.log(FilePath);
-            //   let reference = storage().ref(imageName);
-            //   let task = reference.putFile(FilePath);               // 3
-
-            //   task.then(() => {                                 // 4
-            //       console.log('Image uploaded to the bucket!');
-            //   }).catch((e) => console.log('uploading image error => ', e));
-            
+            console.log(res[0]);
+            setSingleFile(res[0]);
            
         } catch (err) {
             if (DocumentPicker.isCancel(err)) {
@@ -100,6 +90,8 @@ const FileUpload = () => {
                 <TouchableOpacity onPress={UploadFile} style={styles.button}>
                     <Text>Upload File</Text><FontAwesome5 name="cloud-upload-alt" />
                 </TouchableOpacity>
+
+                <Text>{singleFile}</Text>
 
             </View>
         </View>

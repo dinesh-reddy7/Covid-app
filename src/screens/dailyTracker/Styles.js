@@ -13,8 +13,10 @@ export const styles = StyleSheet.create({
        paddingTop:20 
     },
     checkboxContainer: {
-      flexDirection: "row",
+      
+      alignItems:"flex-start",
       marginBottom: 20,
+      paddingLeft:40
   
     },
     checkbox: {
@@ -27,15 +29,19 @@ export const styles = StyleSheet.create({
   
   
     },
+    btnContainer:{
+      paddingLeft:50
+    },
     button: {
       marginTop: 10,
-      height: 45,
+      height: 55,
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'center',
+
       marginBottom: 20,
-      width: 250,
-      borderRadius: 30,
-      backgroundColor: 'blue',
+      width: 150,
+      borderRadius: 10,
+      backgroundColor: 'lightblue',
+      paddingLeft:20
     }
   });

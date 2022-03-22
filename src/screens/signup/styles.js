@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     },
     section1: {
         flex: 1,
-        paddingTop: 50,
+        paddingTop: 5,
         height: 40,
         marginTop: 20,
         marginLeft: 35,

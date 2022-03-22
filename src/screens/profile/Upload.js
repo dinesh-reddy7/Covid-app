@@ -1,101 +1,119 @@
-
 import React, { useState } from 'react';
-import {Text,View,TouchableOpacity,Image,StyleSheet} from 'react-native';
+import { Text, View, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
-
-
+import auth from '@react-native-firebase/auth';
 
 
 const Upload = () => {
-    const[image,setImage] =useState();
-    const[name,setName]=useState();
-    const [loading, setLoading] = useState(false);
-    const [process, setProcess] = useState("");
-    const  SelectImage = () => {
-        console.log("choose photo")
-        ImagePicker.openPicker({
-            width: 300,
-            height: 400,
-            cropping: true
-          }).then(image => {
-            const filePath = image.path.replace("file://", "");
-            console.log(filePath);
-            setImage(filePath)
-            const fileName = filePath.substring(filePath.lastIndexOf('/')+1);
-            console.log(fileName);
-            setName(fileName);
-      
-            
-             
-          }).catch((error) => console.log(error))
-             
-    }
+  const [image, setImage] = useState();
+  const [name, setName] = useState();
+  const [loading, setLoading] = useState(false);
+  const [process, setProcess] = useState("");
 
-    const UploadImage = () => {
-        console.log("choose photo");
-        try {
-            // Check if file selected
-            if (image.length == 0)
-              return alert("Please Select any File");
-            setLoading(true);
-      
-            // Create Reference
-            
-           
-            const reference = storage().ref(`/myfiles/${name}`);
-      
-            // Put File
-            const task = reference.putFile(image);
-            
-      
-            task.on("state_changed", (taskSnapshot) => {
-              setProcess(
-                `${taskSnapshot.bytesTransferred} transferred 
-                 out of ${taskSnapshot.totalBytes}`
-              );
-              console.log(
-                `${taskSnapshot.bytesTransferred} transferred 
-                 out of ${taskSnapshot.totalBytes}`
-              );
-            });
-            task.then(() => {
-              alert("Image uploaded to the bucket!");
-              setProcess("");
-            });
-            setImage();
-          } catch (error) {
-            console.log("Error->", error);
-            alert(`Error-> ${error}`);
-          }
-          setLoading(false);
-        
+  //converting filename to user UID
+  let id = auth().currentUser.uid;
+  let file = id;
+  const extention = file.split('.').pop();
+  const filename = file + '.' + extention;
 
-    }
-
+  const SelectImage = () => {
+    console.log("choose photo")
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true
+    }).then(image => {
+      const filePath = image.path.replace("file://", "");
+      console.log(image.path);
+      console.log(filePath);
+      setImage(filePath)
+      const fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
+      console.log(fileName);
+      setName(fileName);
+      try {
+        // Check if file selected
+        if (image.length == 0)
+          return alert("Please Select any File");
+        setLoading(true);
+  
+        // Create Reference
+  
+  
+        const reference = storage().ref(`/myfiles/${filename}`);
+  
+        // Put File
+        const task = reference.putFile(filePath);
+  
+  
+        task.on("state_changed", (taskSnapshot) => {
+          setProcess(
+            `${taskSnapshot.bytesTransferred} transferred 
+                   out of ${taskSnapshot.totalBytes}`
+          );
+          console.log(
+            `${taskSnapshot.bytesTransferred} transferred 
+                   out of ${taskSnapshot.totalBytes}`
+          );
+        });
+        task.then(() => {
+          alert("Image uploaded to the bucket!");
+          setProcess("");
+        });
+        setImage();
+        const url = storage().ref(`/myfiles/${filename}`).getDownloadURL();
+        console.log("URL:", url)
+      } catch (error) {
+        console.log("Error->", error);
+        alert(`Error-> ${error}`);
+      }
+      setLoading(false);
+  
 
 
 
+    }).catch((error) => console.log(error))
 
-    return(
-      <View style={styles.container}>
-      <TouchableOpacity style={styles.selectButton} onPress={SelectImage}>
-        <Text style={styles.buttonText}>Pick an image</Text>
-      </TouchableOpacity>
+  }
+
+ const TakePhoto = () =>{
+  ImagePicker.openCamera({
+    width: 300,
+    height: 400,
+    cropping: true,
+  }).then(image => {
+    console.log(image);
+  });
+ }
+
+  return (
+    <View style={styles.container}>
       <View style={styles.imageContainer}>
         {image !== null ? (
           <Image source={{ uri: image }} style={styles.imageBox} />
         ) : null}
-      
-         
-      
-          <TouchableOpacity style={styles.uploadButton} onPress={UploadImage}>
-            <Text style={styles.buttonText}>Upload image</Text>
-          </TouchableOpacity>
-       
+
+
+
+      </View>
+      <View style={styles.section}>
+        <TouchableOpacity style={styles.selectButton} onPress={SelectImage}>
+          <Text style={styles.buttonText}>Pick an image</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.cameraButton} onPress={TakePhoto} >
+          <Text style={styles.buttonText}>Take photo</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.imageContainer}>
+        {image !== null ? (
+          <Image source={{ uri: image }} style={styles.imageBox} />
+        ) : null}
+
+
+
       </View>
     </View>
-    )
+  )
 }
 export default Upload;
 
@@ -105,6 +123,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#bbded6'
   },
+  section: {
+    paddingTop: 30
+  },
   selectButton: {
     borderRadius: 5,
     width: 150,
@@ -113,7 +134,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  uploadButton: {
+  cameraButton: {
     borderRadius: 5,
     width: 150,
     height: 50,

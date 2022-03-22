@@ -7,7 +7,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Vaccination from '../screens/vaccination/Vaccination';
 import DailyTracker from '../screens/dailyTracker/DailyTracker';
-// import Upload from '../screens/Upload';
+
 
 
 
